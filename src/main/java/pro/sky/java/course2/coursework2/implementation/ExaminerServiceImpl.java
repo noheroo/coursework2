@@ -25,7 +25,7 @@ public class ExaminerServiceImpl implements ExaminerService {
             listForExam.add(questionObj);
         }
         return listForExam;
-    }
+    }//todo если значение amount приходит значение меньше, чем есть вопросов  все работает без проблем, а если равное количеству вопросов, то последний элемент не добавляется, как я понял рандомное значение последнего вопроса не выпадает, это нормально или я опять где-то ошибку допустил? то есть если в списке вопросов 10 вопросов и запросить через amount 10 вопросов, то запрос не выполнится
 
 
     private void validateAmount(int amount) {
