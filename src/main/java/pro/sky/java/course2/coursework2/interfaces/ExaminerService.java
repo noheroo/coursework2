@@ -1,6 +1,6 @@
-package pro.sky.java.course2.coursework2.Interface;
+package pro.sky.java.course2.coursework2.interfaces;
 
-import pro.sky.java.course2.coursework2.Data.Question;
+import pro.sky.java.course2.coursework2.data.Question;
 
 import java.util.Collection;
 

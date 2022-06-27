@@ -1,11 +1,11 @@
-package pro.sky.java.course2.coursework2.Controller;
+package pro.sky.java.course2.coursework2.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
-import pro.sky.java.course2.coursework2.Data.Question;
-import pro.sky.java.course2.coursework2.Implementation.ExaminerServiceImpl;
-import pro.sky.java.course2.coursework2.Interface.ExaminerService;
+import pro.sky.java.course2.coursework2.data.Question;
+import pro.sky.java.course2.coursework2.implementation.ExaminerServiceImpl;
+import pro.sky.java.course2.coursework2.interfaces.ExaminerService;
 
 import java.util.Collection;
 
@@ -18,8 +18,9 @@ public class ExamController {
         this.examinerService = examinerService;
     }
 
-    @GetMapping("/exam/get")
-    public Collection<Question> getQuestions(@RequestParam int amount) {
+    @GetMapping("exam/get/{amount}")
+    public Collection<Question> getQuestions(@PathVariable int amount) {
         return examinerService.getQuestion(amount);
     }
 }
+

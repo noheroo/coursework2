@@ -1,13 +1,12 @@
-package pro.sky.java.course2.coursework2.Controller;
+package pro.sky.java.course2.coursework2.controller;
 
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import pro.sky.java.course2.coursework2.Data.Question;
-import pro.sky.java.course2.coursework2.Implementation.JavaQuestionService;
-import pro.sky.java.course2.coursework2.Interface.QuestionService;
+import pro.sky.java.course2.coursework2.data.Question;
+import pro.sky.java.course2.coursework2.interfaces.QuestionService;
 
 import java.util.Collection;
 
@@ -17,20 +16,22 @@ public class JavaQuestionController {
 
     private final QuestionService questionService;
 
-    public JavaQuestionController(JavaQuestionService questionService) {
+    public JavaQuestionController(QuestionService questionService) {
         this.questionService = questionService;
     }
 
     @GetMapping("/add")
     public Question addQuestion(@RequestParam String question,
                                 @RequestParam String answer) {
-        return questionService.add(question, answer);
+        Question questionObj = new Question(question, answer);
+        return questionService.add(questionObj);
     }
 
     @GetMapping("/remove")
     public Question removeQuestion(@RequestParam String question,
                                    @RequestParam String answer) {
-        return questionService.remove(question, answer);
+        Question questionObj = new Question(question, answer);
+        return questionService.remove(questionObj);
     }
 
     @GetMapping
