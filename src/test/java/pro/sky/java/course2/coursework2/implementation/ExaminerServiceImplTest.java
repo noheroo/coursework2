@@ -58,6 +58,19 @@ class ExaminerServiceImplTest {
         verify(questionService, times(1)).questionListSize();
         verify(questionService, times(2)).getRandomQuestion();
     }
+    @Test
+
+    void testingOrderGetListOfQuestionWhenAddedTwoQuestion() {
+        when(questionService.questionListSize()).thenReturn(TWO);
+        when(questionService.getRandomQuestion()).thenReturn(QUESTION1).thenReturn(QUESTION2);
+
+        assertEquals(out.getQuestion(2), TEST_SET_2);
+
+        InOrder inOrder = inOrder(questionService);
+
+        inOrder.verify(questionService, times(1)).questionListSize();
+        inOrder.verify(questionService, times(2)).getRandomQuestion();
+    }
 
     @Test
     void shouldThrowAmountQuestionsMoreThanExistedExceptionWhenNeededQuantityQuestionMoreThanCreated() {
