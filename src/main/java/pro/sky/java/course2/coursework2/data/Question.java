@@ -1,4 +1,4 @@
-package pro.sky.java.course2.coursework2.Data;
+package pro.sky.java.course2.coursework2.data;
 
 import java.util.Objects;
 
@@ -22,8 +22,12 @@ public class Question {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         Question question1 = (Question) o;
         return Objects.equals(question, question1.question) && Objects.equals(answer, question1.answer);
     }

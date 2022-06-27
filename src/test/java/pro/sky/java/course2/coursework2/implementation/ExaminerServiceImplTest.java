@@ -1,12 +1,12 @@
-package pro.sky.java.course2.coursework2.Implementation;
+package pro.sky.java.course2.coursework2.implementation;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InOrder;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import pro.sky.java.course2.coursework2.Exception.AmountQuestionsMoreThanExistedException;
-import pro.sky.java.course2.coursework2.Interface.QuestionService;
+import pro.sky.java.course2.coursework2.exception.AmountQuestionsMoreThanExistedException;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
@@ -16,7 +16,7 @@ import static pro.sky.java.course2.coursework2.Constants.*;
 class ExaminerServiceImplTest {
 
     @Mock
-    private QuestionService questionService;
+    private JavaQuestionService questionService;
 
     @InjectMocks
     private ExaminerServiceImpl out;
@@ -26,7 +26,7 @@ class ExaminerServiceImplTest {
         when(questionService.questionListSize()).thenReturn(FIVE);
         when(questionService.getRandomQuestion()).thenReturn(QUESTION1);
 
-        assertEquals(out.getQuestion(1), TEST_LIST_1);
+        assertEquals(out.getQuestion(1), TEST_SET_1);
 
         verify(questionService, times(1)).questionListSize();
         verify(questionService, times(1)).getRandomQuestion();
@@ -35,11 +35,25 @@ class ExaminerServiceImplTest {
     }
 
     @Test
+    void testingOrderGetListOfQuestionWhenAddedOneQuestion() {
+        when(questionService.questionListSize()).thenReturn(FIVE);
+        when(questionService.getRandomQuestion()).thenReturn(QUESTION1);
+
+        assertEquals(out.getQuestion(1), TEST_SET_1);
+
+        InOrder inOrder = inOrder(questionService);
+
+        inOrder.verify(questionService, times(1)).questionListSize();
+        inOrder.verify(questionService, times(1)).getRandomQuestion();
+
+    }
+
+    @Test
     void testingGetListOfQuestionWhenAddedTwoQuestion() {
         when(questionService.questionListSize()).thenReturn(TWO);
         when(questionService.getRandomQuestion()).thenReturn(QUESTION1).thenReturn(QUESTION2);
 
-        assertEquals(out.getQuestion(2), TEST_LIST);
+        assertEquals(out.getQuestion(2), TEST_SET_2);
 
         verify(questionService, times(1)).questionListSize();
         verify(questionService, times(2)).getRandomQuestion();

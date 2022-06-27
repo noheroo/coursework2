@@ -1,9 +1,9 @@
-package pro.sky.java.course2.coursework2.Exception;
+package pro.sky.java.course2.coursework2.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-@ResponseStatus(HttpStatus.FOUND)
+@ResponseStatus(HttpStatus.BAD_REQUEST)
 public class QuestionAlreadyAddedException extends RuntimeException{
     public QuestionAlreadyAddedException() {
     }

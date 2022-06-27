@@ -1,19 +1,22 @@
-package pro.sky.java.course2.coursework2.Implementation;
+package pro.sky.java.course2.coursework2.implementation;
 
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
-import pro.sky.java.course2.coursework2.Data.Question;
-import pro.sky.java.course2.coursework2.Exception.QuestionAlreadyAddedException;
-import pro.sky.java.course2.coursework2.Exception.QuestionNotFoundException;
-import pro.sky.java.course2.coursework2.Interface.QuestionService;
+import pro.sky.java.course2.coursework2.data.Question;
+import pro.sky.java.course2.coursework2.exception.QuestionAlreadyAddedException;
+import pro.sky.java.course2.coursework2.exception.QuestionNotFoundException;
+import pro.sky.java.course2.coursework2.interfaces.QuestionService;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import java.util.Random;
-
 @Service
 public class JavaQuestionService implements QuestionService {
 
-    private final ArrayList<Question> questionList;
+    Random random = new Random();
+
+    private final List<Question> questionList;
 
     public JavaQuestionService() {
         this.questionList = new ArrayList<>();
@@ -35,11 +38,10 @@ public class JavaQuestionService implements QuestionService {
     }
 
     @Override
-    public Question remove(String question, String answer) {
-        Question questionObj = createQuestion(question, answer);
-        validateQuestionForRemove(questionObj);
-        questionList.remove(questionObj);
-        return questionObj;
+    public Question remove(Question question) {
+        validateQuestionForRemove(question);
+        questionList.remove(question);
+        return question;
     }
 
     @Override
@@ -52,13 +54,11 @@ public class JavaQuestionService implements QuestionService {
         return questionList.get(generateRandomNumber(questionList.size() - 1));
     }
 
-    @Override
     public int questionListSize() {
         return questionList.size();
     }
 
-    private static int generateRandomNumber(int maxValue) {
-        Random random = new Random();
+    private int generateRandomNumber(int maxValue) {
         return random.nextInt(maxValue);
     }
 
