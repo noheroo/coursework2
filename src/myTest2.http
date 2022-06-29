@@ -1,0 +1,38 @@
+
+GET http://localhost:8080/exam/math/add?question=question&answer=answer
+###
+GET http://localhost:8080/exam/math/add?question=question1&answer=answer1
+###
+GET http://localhost:8080/exam/math/add?question=question2&answer=answer2
+###
+GET http://localhost:8080/exam/math/add?question=question3&answer=answer3
+###
+GET http://localhost:8080/exam/math/add?question=question4&answer=answer4
+###
+GET http://localhost:8080/exam/math/add?question=question5&answer=answer5
+###
+GET http://localhost:8080/exam/math/add?question=question6&answer=answer6
+###
+GET http://localhost:8080/exam/math/add?question=question7&answer=answer7
+###
+GET http://localhost:8080/exam/math/add?question=question8&answer=answer8
+###
+GET http://localhost:8080/exam/math/add?question=question9&answer=answer9
+###
+GET http://localhost:8080/exam/math
+###
+GET http://localhost:8080/exam/get/10
+###
+GET http://localhost:8080/exam/math/remove?question=question8&answer=answer9
+###
+GET http://localhost:8080/exam/math/remove?question=question2&answer=answer2
+###
+GET http://localhost:8080/exam/math/remove?question=question3&answer=answer3
+
+
+
+
+
+
+
+
