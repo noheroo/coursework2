@@ -4,7 +4,9 @@ import pro.sky.java.course2.coursework2.data.Question;
 
 import java.util.Collection;
 
-public interface QuestionService {
+public interface QuestionRepository {
+
+    void init();
 
     Question add(Question question);
 
@@ -12,7 +14,7 @@ public interface QuestionService {
 
     Collection<Question> getAll();
 
-    Question getRandomQuestion();
+    Question getQuestion(int numberOfQuestion);
 
-    int repositorySize();
+    int questionListSize();
 }

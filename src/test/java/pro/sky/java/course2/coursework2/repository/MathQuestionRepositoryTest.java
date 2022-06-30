@@ -1,4 +1,4 @@
-package pro.sky.java.course2.coursework2.implementation;
+package pro.sky.java.course2.coursework2.repository;
 
 import org.junit.jupiter.api.Test;
 import pro.sky.java.course2.coursework2.exception.QuestionAlreadyAddedException;
@@ -6,42 +6,32 @@ import pro.sky.java.course2.coursework2.exception.QuestionNotFoundException;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static pro.sky.java.course2.coursework2.Constants.*;
+import static pro.sky.java.course2.coursework2.Constants.QUESTION1;
 
-class JavaQuestionServiceTest {
+class MathQuestionRepositoryTest {
 
-    private final JavaQuestionService out = new JavaQuestionService();
-
-    @Test
-    void firstTestingAddByQuestionAndAnswer() {
-        assertEquals(out.add(TEST_QUESTION_1, TEST_ANSWER_1), QUESTION1);
-    }
+    private final MathQuestionRepository out = new MathQuestionRepository();
 
     @Test
-    void secondTestingAddByQuestionAndAnswer() {
-        out.add(TEST_QUESTION_1, TEST_ANSWER_1);
-        assertEquals(out.getAll().size(), ONE);
-    }
-
-    @Test
-    void firstTestingAddByQuestionObject() {
+    void firstTestingAddQuestion() {
         assertEquals(out.add(QUESTION1), QUESTION1);
     }
 
     @Test
-    void secondTestingAddByQuestionObject() {
+    void secondTestingAddQuestion() {
         out.add(QUESTION1);
         out.add(QUESTION2);
         assertEquals(out.getAll().size(), TWO);
     }
 
     @Test
-    void firstTestingRemoveByQuestionAndAnswer() {
+    void firstTestingRemoveQuestion() {
         out.add(QUESTION1);
         assertEquals(out.remove(QUESTION1), QUESTION1);
     }
 
     @Test
-    void secondTestingRemoveByQuestionAndAnswer() {
+    void secondTestingRemoveQuestion() {
         out.add(QUESTION2);
         out.remove(QUESTION2);
         assertEquals(out.getAll().size(), ZERO);
@@ -56,7 +46,14 @@ class JavaQuestionServiceTest {
     }
 
     @Test
-    void questionListSize() {
+    void testingGetQuestion() {
+        out.add(QUESTION1);
+        out.add(QUESTION2);
+        assertEquals(out.getQuestion(1), QUESTION2);
+    }
+
+    @Test
+    void testingQuestionListSize() {
         out.add(QUESTION1);
         assertEquals(out.getAll().size(), ONE);
     }
@@ -70,11 +67,5 @@ class JavaQuestionServiceTest {
     void firstShouldThrowQuestionAlreadyAddedExceptionWhenAddAlreadyAddedQuestion() {
         out.add(QUESTION1);
         assertThrows(QuestionAlreadyAddedException.class, () -> out.add(QUESTION1));
-    }
-
-    @Test
-    void secondShouldThrowQuestionAlreadyAddedExceptionWhenAddAlreadyAddedQuestion() {
-        out.add(QUESTION1);
-        assertThrows(QuestionAlreadyAddedException.class, () -> out.add(TEST_QUESTION_1, TEST_ANSWER_1));
     }
 }

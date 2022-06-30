@@ -4,7 +4,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import pro.sky.java.course2.coursework2.data.Question;
-import pro.sky.java.course2.coursework2.implementation.ExaminerServiceImpl;
+import pro.sky.java.course2.coursework2.services.ExaminerServiceImpl;
 import pro.sky.java.course2.coursework2.interfaces.ExaminerService;
 
 import java.util.Collection;
@@ -20,7 +20,7 @@ public class ExamController {
 
     @GetMapping("exam/get/{amount}")
     public Collection<Question> getQuestions(@PathVariable int amount) {
-        return examinerService.getQuestion(amount);
+        return examinerService.getQuestions(amount);
     }
 }
 
