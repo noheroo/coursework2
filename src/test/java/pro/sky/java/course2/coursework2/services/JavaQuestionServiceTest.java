@@ -42,6 +42,7 @@ class JavaQuestionServiceTest {
     @Test
     void getRandomQuestion() {
         when(questionRepository.getQuestion(Math.abs(anyInt()))).thenReturn(QUESTION2);
+        when(questionRepository.questionListSize()).thenReturn(ONE);
         assertEquals(out.getRandomQuestion(),QUESTION2);
     }
 

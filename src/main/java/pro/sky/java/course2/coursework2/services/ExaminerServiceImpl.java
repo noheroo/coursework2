@@ -26,15 +26,7 @@ public class ExaminerServiceImpl implements ExaminerService {
     @Override
     public Collection<Question> getQuestions(int amount) {
         validateAmount(amount);
-
-        int quantityForJava;
-        int quantityForMath;
-        do {
-            quantityForJava = generateRandomNumber(amount);
-            quantityForMath = amount - quantityForJava;
-        }
-        while (quantityForJava > javaQuestionService.repositorySize() || quantityForMath > mathQuestionService.repositorySize());
-
+        int quantityForJava = quantityForJava(amount);
         Set<Question> listForExam = new HashSet<>(amount);
 
         while (listForExam.size() < quantityForJava) {
@@ -57,5 +49,16 @@ public class ExaminerServiceImpl implements ExaminerService {
 
     private int generateRandomNumber(int maxValue) {
         return random.nextInt(maxValue);
+    }
+
+    public int quantityForJava(int amount) {
+        int quantityForJava;
+        int quantityForMath;
+        do {
+            quantityForJava = generateRandomNumber(amount);
+            quantityForMath = amount - quantityForJava;
+        }
+        while (quantityForJava > javaQuestionService.repositorySize() || quantityForMath > mathQuestionService.repositorySize());
+        return quantityForJava;
     }
 }

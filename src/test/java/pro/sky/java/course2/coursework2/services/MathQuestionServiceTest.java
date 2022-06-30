@@ -41,8 +41,9 @@ class MathQuestionServiceTest {
     @Test
     void getRandomQuestion() {
         when(questionRepository.getQuestion(anyInt())).thenReturn(QUESTION2);
+        when(questionRepository.questionListSize()).thenReturn(ONE);
         assertEquals(out.getRandomQuestion(), QUESTION2);
-    }//todo я так понимаю, когда есть вложенные методы, Mockito не работает? потому что этот тест не проходит, идея пишет "bound must be positive" bound это переменная из random.nextInt(maxValue)
+    }
 
     @Test
     void repositorySize() {
