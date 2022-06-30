@@ -67,6 +67,11 @@ public class JavaQuestionRepository implements QuestionRepository {
         return questionList.size();
     }
 
+    @Override
+    public String typeOfRepository() {
+        return "Java";
+    }
+
     private Question createQuestion (String question, String answer) {
         return new Question(question, answer);
     }

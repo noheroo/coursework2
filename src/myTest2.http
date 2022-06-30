@@ -21,11 +21,11 @@ GET http://localhost:8080/exam/math/add?question=question9&answer=answer9
 ###
 GET http://localhost:8080/exam/math
 ###
-GET http://localhost:8080/exam/get/10
+GET http://localhost:8080/exam/get/5
 ###
-GET http://localhost:8080/exam/math/remove?question=question8&answer=answer9
+GET http://localhost:8080/exam/math/remove?question=question5&answer=answer5
 ###
-GET http://localhost:8080/exam/math/remove?question=question2&answer=answer2
+GET http://localhost:8080/exam/math/remove?question=question6&answer=answer6
 ###
 GET http://localhost:8080/exam/math/remove?question=question3&answer=answer3
 

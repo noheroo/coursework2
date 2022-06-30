@@ -14,6 +14,7 @@ public class ExaminerServiceImpl implements ExaminerService {
 
     private final Random random = new Random();
 
+
     private final QuestionService javaQuestionService;
     private final QuestionService mathQuestionService;
 
@@ -24,9 +25,10 @@ public class ExaminerServiceImpl implements ExaminerService {
     }
 
     @Override
+
     public Collection<Question> getQuestions(int amount) {
         validateAmount(amount);
-        int quantityForJava = quantityForJava(amount);
+        int quantityForJava = chooseQuantityForJava(amount);
         Set<Question> listForExam = new HashSet<>(amount);
 
         while (listForExam.size() < quantityForJava) {
@@ -51,7 +53,7 @@ public class ExaminerServiceImpl implements ExaminerService {
         return random.nextInt(maxValue);
     }
 
-    public int quantityForJava(int amount) {
+    public int chooseQuantityForJava(int amount) {
         int quantityForJava;
         int quantityForMath;
         do {

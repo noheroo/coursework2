@@ -17,4 +17,6 @@ public interface QuestionRepository {
     Question getQuestion(int numberOfQuestion);
 
     int questionListSize();
+
+    String typeOfRepository();
 }
