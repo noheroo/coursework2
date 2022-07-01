@@ -50,4 +50,5 @@ class MathQuestionServiceTest {
         when(questionRepository.questionListSize()).thenReturn(FIVE);
         assertEquals(out.repositorySize(), FIVE);
     }
+
 }

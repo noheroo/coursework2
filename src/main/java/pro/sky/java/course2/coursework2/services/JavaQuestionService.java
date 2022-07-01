@@ -3,6 +3,7 @@ package pro.sky.java.course2.coursework2.services;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import pro.sky.java.course2.coursework2.data.Question;
+import pro.sky.java.course2.coursework2.exception.TryingToGetAccessToWrongRepository;
 import pro.sky.java.course2.coursework2.interfaces.QuestionRepository;
 import pro.sky.java.course2.coursework2.interfaces.QuestionService;
 
