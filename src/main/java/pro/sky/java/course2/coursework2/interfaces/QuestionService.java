@@ -15,6 +15,4 @@ public interface QuestionService {
     Question getRandomQuestion();
 
     int repositorySize();
-
-    void validateRepository(String typeOfQuestions);
 }

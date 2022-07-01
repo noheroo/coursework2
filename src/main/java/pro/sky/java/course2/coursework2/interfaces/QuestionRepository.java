@@ -18,5 +18,4 @@ public interface QuestionRepository {
 
     int questionListSize();
 
-    String typeOfRepository();
 }

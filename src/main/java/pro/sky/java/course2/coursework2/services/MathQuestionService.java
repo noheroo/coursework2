@@ -16,8 +16,6 @@ public class MathQuestionService implements QuestionService {
 
     private final QuestionRepository questionRepository;
 
-    private final String typeOfQuestions = "Math";
-
     public MathQuestionService(QuestionRepository questionRepository) {
         this.questionRepository = questionRepository;
     }
@@ -25,47 +23,32 @@ public class MathQuestionService implements QuestionService {
 
     @Override
     public Question add(Question question) {
-        validateRepository(typeOfQuestions);
-        return questionRepository.add(question);
+        throw new TryingToGetAccessToWrongRepository("Попытка доступа к неверному репозиторию");
     }
 
     @Override
     public Question remove(Question question) {
-        validateRepository(typeOfQuestions);
-        return questionRepository.remove(question);
+        throw new TryingToGetAccessToWrongRepository("Попытка доступа к неверному репозиторию");
+
     }
 
     @Override
     public Collection<Question> getAll() {
-        validateRepository(typeOfQuestions);
-        return questionRepository.getAll();
+        throw new TryingToGetAccessToWrongRepository("Попытка доступа к неверному репозиторию");
     }
 
     @Override
     public Question getRandomQuestion() {
-        if (!questionRepository.typeOfRepository().equalsIgnoreCase(typeOfQuestions)) {
             return createRandomQuestion();
-        }
-        return questionRepository.getQuestion(generateRandomNumber(repositorySize()));
     }
 
     @Override
     public int repositorySize() {
-        if (!questionRepository.typeOfRepository().equalsIgnoreCase(typeOfQuestions)) {
             return generateRandomNumber(10);
-        }
-        return questionRepository.questionListSize();
     }
 
     private int generateRandomNumber(int maxValue) {
         return random.nextInt(maxValue);
-    }
-
-    @Override
-    public void validateRepository(String typeOfQuestions) {
-        if (!questionRepository.typeOfRepository().equalsIgnoreCase(typeOfQuestions)) {
-            throw new TryingToGetAccessToWrongRepository("Попытка доступа к неверному репозиторию");
-        }
     }
 
     private Question createRandomQuestion() {
